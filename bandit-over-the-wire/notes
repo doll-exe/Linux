@@ -1,0 +1,29 @@
+USEFUL COMMANDS I FOUND WHILE SOLVING:
+LEVEL 4:
+find . -type f -exec file {} \;
+
+find [starting_directory] [options] [expression]
+[starting_directory]:
+/ for root directory
+. for current directory
+~ home directory
+or a specific path
+
+[options]:
+-type type_char (filters results by file type):
+-- f regular file
+-- d directory
+-- l symbolic link
+
+[expression]:
+-exec command(file) {} \; (or instead of '\;' '+')
+Executes a specified command on each found file 
+
+LEVEL 5:
+find . -type f -size 1033c -exec file {} \; -exec ls -l {} \;
+cat ./maybehere07/.file2
+NOTE: -rw-r----- → r = read, w = write, no x = not executable.
+If it had x (like -rwxr-xr-x), then it would be executable.
+PASSWORD FOR LEVEL 6: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+
+I tried to connect SSH but my VM was resisting to connect... /need to note that in github or notion
