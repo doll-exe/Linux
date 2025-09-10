@@ -5,4 +5,67 @@ Every program we run on the command line automatically has three data streams co
 2. STDOUT (1) - Standard output (data printed by the program, defaults to the terminal)
 3. STDERR (2) - Standard error (for error messages, also defaults to the terminal)
 
-NOTICE: in 'notes on all levels' 
+NOTICE: in level 6 I used 2>dev/null and 2 IS THE STDERR. I basically said:
+2 (STDERR) > (redirect) /dev/null (a sinkhole device, like a 'trash bin')
+In summary, what I did is redirecting standard error output to null device or in other words ignoring standard error.
+
+REDIRECTING TO A FILE
+---------------------------------------------------------------------------------------------------------------------
+ls
+*listed whatever we have in our current directory*
+ls > myoutput
+cat myoutput
+*read myoutput file where all that was listed using 'ls' would appear in a line by line sequence*
+---------------------------------------------------------------------------------------------------------------------
+
+When piping and redirecting, the actual data will always be the same, but the formatting of that data may be 
+slightly different to what is normally printed to the screen. Keep this in mind.
+
+---------------------------------------------------------------------------------------------------------------------
+If we save into a file which already exists, however, then it's contents will be cleared, then the new output saved to it.
+---------------------------------------------------------------------------------------------------------------------
+
+>> is used to get the new data to be appended
+< is used to send the data the other way
+
+----------------------------------------------------------------------------------------------------------------------
+angel@bash: wc -l myoutput
+8 myoutput
+angel@bash: wc -l < myoutput
+8
+
+The difference between two of the above commands is that in the first case the terminal shows the name of the file as well
+whereas when we use < wc recieved some content to process, but it has no knowledge of where it came from so it may not print this information. 
+As a result, this mechanism is often used in order to get ancillary data (which may not be required) to not be printed. When we are piping
+or redirecting the data is sent anonymously.
+----------------------------------------------------------------------------------------------------------------------
+angel@bash: wc -l < data.txt > myoutput
+7 (7 lines in the new file (or already existing file) that we transfered from data.txt)
+
+
+
+REDIRECTING STDERR
+----------------------------------------------------------------------------------------------------------------------
+angel@bash: ls -l video.mpg lol.foo
+ls: cannot access blah.foo: No such file or directory
+-rwxr--r-- 1 ryan users 6 May 16 09:14 video.mpg
+angel@bash: ls -l video.mpg blah.foo 2> errors.txt
+-rwxr--r-- 1 ryan users 6 May 16 09:14 video.mpg
+angel@bash: cat errors.txt
+ls: cannot access blah.foo: No such file or directory
+-----------------------------------------------------------------------------------------------------------------------
+To save both normal output and error messages into a single file, there is a need to redirect the STDERR stream to the STDOUT stream 
+and redirect STDOUT to a file. We redirect to a file first then redirect the error stream. We identify the redirection to a stream by 
+placing an & in front of the stream number (otherwise it would redirect to a file called 1)
+
+angel@bash: ls -l video.mpg blah.foo > myoutput 2>&1
+angel@bash: cat myoutput
+ls: cannot access blah.foo: No such file or directory
+-rwxr--r-- 1 ryan users 6 May 16 09:14 video.mpg
+
+
+PIPING
+-----------------------------------------------------------------------------------------------------------------------
+Piping is sending data from one program to another.
+| is used. This operator does feeds the output from the program on the left as input to the program on the right.
+
