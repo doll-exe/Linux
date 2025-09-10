@@ -1,0 +1,5 @@
+I finished setting up my new virtual machine (Ubuntu) and when i did:
+sudo apt update && sudo apt upgrade -y
+
+it updated my ubuntu, but my terminal seemed to be stuck, so i did:
+pkill -9 gnome-terminal
