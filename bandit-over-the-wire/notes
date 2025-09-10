@@ -1,4 +1,4 @@
-USEFUL COMMANDS I FOUND WHILE SOLVING:
+<h3>USEFUL COMMANDS I FOUND WHILE SOLVING:</h4>
 LEVEL 4:
 find . -type f -exec file {} \;
 
@@ -27,3 +27,11 @@ If it had x (like -rwxr-xr-x), then it would be executable.
 PASSWORD FOR LEVEL 6: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
 
 I tried to connect SSH but my VM was resisting to connect... /need to note that in github or notion
+
+LEVEL 6:
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+LEVEL 7 NOTES:
+dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
