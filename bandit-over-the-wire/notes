@@ -1,4 +1,5 @@
-<h3>USEFUL COMMANDS I FOUND WHILE SOLVING:</h4>
+*USEFUL COMMANDS I FOUND WHILE SOLVING:*
+
 LEVEL 4:
 find . -type f -exec file {} \;
 
@@ -19,6 +20,7 @@ or a specific path
 -exec command(file) {} \; (or instead of '\;' '+')
 Executes a specified command on each found file 
 
+
 LEVEL 5:
 find . -type f -size 1033c -exec file {} \; -exec ls -l {} \;
 cat ./maybehere07/.file2
@@ -26,11 +28,30 @@ NOTE: -rw-r----- → r = read, w = write, no x = not executable.
 If it had x (like -rwxr-xr-x), then it would be executable.
 PASSWORD FOR LEVEL 6: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
 
-I tried to connect SSH but my VM was resisting to connect... /need to note that in github or notion
+
+#CONNECTION ISSUE RESOLVED
+I tried to connect SSH but my VM was resisting to connect... Then I checked my VMs connection settings and NAT connection was established.
+
+!A NAT (Network Address Translation) connection is a network setup where a router translates the private IP addresses of devices on a local network 
+into a single public IP address to access the internet, and vice-versa. This technique conserves IP addresses, as a whole network of devices shares 
+one public IP. It also provides security by hiding the internal network from the public internet.!
+
+I changed it to bridged connection which connects my VM directly to the network. It worked and everything was fixed, I was able to ping 8.8.8.8 and ping google.com, 
+however as I know, bridged connection is less secure than NAT connection and even though bandit game is not dangerous in any way, i still was eager to fix it.
+
+I pressed WIN + R and typed 'services.msc', found VMware NAT service and VMware DHCP service and restarted both, restarted my VM and everything started working. 
+I fixed VMware NAT on my host computer.
+
+DHCP (Dynamic Host Configuration Protocol) is a standard network protocol that automatically assigns IP addresses and other configuration information, 
+such as the subnet mask, default gateway, and DNS servers, to devices (hosts) on a network.
+
 
 LEVEL 6:
 find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+/*Here 2>/dev/null is used to hide all files that say "Permission denied"
+
 morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
 
 LEVEL 7 NOTES:
 dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
