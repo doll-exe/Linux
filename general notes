@@ -17,7 +17,7 @@ dpkg -l | grep open-vm-tools
 - dpkg is a tool to install, build, remove and manage Debian packages
 - -l is for listing
 - | is piping
-
+https://github.com/doll-exe/Linux/blob/main/bandit-over-the-wire/Piping%20and%20Redirection
 i didn't have it so:
 sudo apt update
 sudo apt install open-vm-tools open-vm-tools-desktop -y
