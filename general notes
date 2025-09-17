@@ -1,5 +1,24 @@
+1) TERMINAL GOT STUCK
 I finished setting up my new virtual machine (Ubuntu) and when i did:
+
 sudo apt update && sudo apt upgrade -y
 
 it updated my ubuntu, but my terminal seemed to be stuck, so i did:
 pkill -9 gnome-terminal
+
+2) CANT COPYPASTE FROM TERMINAL TO HOST AND VISE VERSA
+i set up a new Ubuntu VM but i couldn't copypaste from VM to host machine and vise versa.
+i checked the VM options and the clipboard was connected and shared. my VM was missing
+open-vm-tools...
+to check if i had it:
+
+dpkg -l | grep open-vm-tools
+
+- dpkg is a tool to install, build, remove and manage Debian packages
+- -l is for listing
+- | is piping
+
+i didn't have it so:
+sudo apt update
+sudo apt install open-vm-tools open-vm-tools-desktop -y
+sudo reboot
